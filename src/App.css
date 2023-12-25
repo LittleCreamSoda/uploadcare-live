@@ -14,16 +14,16 @@ body {
 }
 
 .initial-message__p {
-    font-size: 1.5rem;
-    font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .initial-message__link {
   color: rgb(55, 113, 255);
-    text-decoration: none;
+  text-decoration: none;
   transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: radial-gradient(141.01% 172.5% at 0% 0%, rgb(55, 27, 136) 0%, rgb(147, 101, 253) 84.45%) text;
+    color: rgb(147, 101, 253);
   }
 }
