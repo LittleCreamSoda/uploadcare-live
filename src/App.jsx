@@ -1,6 +1,7 @@
+import React from "react";
 import "./App.css";
 
-const App = () => {
+function App() {
   return (
     <div className="initial-message__container">
       <p className="initial-message__p">
@@ -18,6 +19,6 @@ const App = () => {
       </p>
     </div>
   );
-};
+}
 
 export default App;

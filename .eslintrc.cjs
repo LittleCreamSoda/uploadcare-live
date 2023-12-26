@@ -1,17 +1,83 @@
 module.exports = {
-  root: true,
-  env: { browser: true, es2020: true },
-  extends: [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
-    "plugin:react-hooks/recommended",
+  ignorePatterns: [
+    '**/public/**',
+    '**/.cache/**',
+    '**/static/**',
+    '**/content/**',
+    '**/plugins/**',
   ],
-  ignorePatterns: ["dist", ".eslintrc.cjs"],
-  parserOptions: { ecmaVersion: "latest", sourceType: "module" },
-  settings: { react: { version: "18.2" } },
-  plugins: ["react-refresh"],
-  rules: {
-    "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+  extends: [
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+    'plugin:react-hooks/recommended',
+    'airbnb/hooks',
+    'airbnb',
+  ],
+  plugins: ['import'],
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
   },
+  rules: {
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
+    'import/prefer-default-export': 'off',
+  },
+  overrides: [
+    {
+      files: ['**/*.ts', '**/*.tsx'],
+      env: {
+        browser: true,
+        es6: true,
+      },
+      extends: [
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        'airbnb-typescript',
+        'prettier',
+      ],
+      plugins: [
+        '@typescript-eslint',
+        'react',
+        'react-hooks',
+        'prettier',
+      ],
+      rules: {
+        '@typescript-eslint/no-unsafe-enum-comparison': 'off',
+        'react/require-default-props': 'off',
+        'react/prop-types': 'off',
+        'react/no-array-index-key': 'off',
+      },
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        tsconfigRootDir: __dirname,
+        project: ['./tsconfig.json'],
+      },
+    },
+    {
+      files: ['**/*.js', '**/*.jsx'],
+      env: {
+        browser: true,
+        es6: true,
+      },
+      extends: ['prettier'],
+      plugins: [
+        'react',
+        'react-hooks',
+        'prettier',
+      ],
+    },
+  ],
 };
